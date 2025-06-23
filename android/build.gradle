@@ -1,0 +1,54 @@
+group 'dev.nbrg.nbrg_pdf_viewer_flutter'
+version '2.0.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'dev.nbrg.nbrg_pdf_viewer_flutter'
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    namespace project.group
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
+    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.3'
+
+
+//    implementation files('D:/SDKs/flutter/bin/cache/artifacts/engine/android-arm/flutter.jar')
+}
