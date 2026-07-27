@@ -4,7 +4,7 @@ version '2.0.0'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -15,7 +15,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -46,8 +46,8 @@ subprojects {
 }
 
 dependencies {
-    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.3'
-
-
-//    implementation files('D:/SDKs/flutter/bin/cache/artifacts/engine/android-arm/flutter.jar')
+    // 16 KB page size-aligned fork of mhiew/android-pdf-viewer (Maven Central), needed for
+    // Google Play's 16 KB memory page size policy. mhiew's own releases stopped at 3.2.0-beta.3
+    // without ever shipping 16 KB-aligned native libraries.
+    implementation 'io.github.oothp:android-pdf-viewer:3.2.0-beta06'
 }
