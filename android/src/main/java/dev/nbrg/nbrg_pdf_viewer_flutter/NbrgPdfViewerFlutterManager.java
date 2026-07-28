@@ -65,7 +65,9 @@ class NbrgPdfViewerFlutterManager {
     void close(MethodCall call, MethodChannel.Result result) {
         if (pdfView != null) {
             ViewGroup vg = (ViewGroup) (pdfView.getParent());
-            vg.removeView(pdfView);
+            if (vg != null) {
+                vg.removeView(pdfView);
+            }
         }
         pdfView = null;
         if (result != null) {

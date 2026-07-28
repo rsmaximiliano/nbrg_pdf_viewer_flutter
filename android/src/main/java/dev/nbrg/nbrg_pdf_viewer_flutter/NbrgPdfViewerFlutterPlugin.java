@@ -139,7 +139,9 @@ public class NbrgPdfViewerFlutterPlugin implements FlutterPlugin, ActivityAware,
     @Override
     public void onDetachedFromActivity() {
         activity = null;
-        nbrgPdfViewerFlutterManager.close();
+        if (nbrgPdfViewerFlutterManager != null) {
+            nbrgPdfViewerFlutterManager.close();
+        }
 //        deregisterFromActivity();
     }
 }
